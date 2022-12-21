@@ -29,10 +29,11 @@ class MainViewController: UIViewController {
         $0.collectionViewLayout = layout
         $0.showsVerticalScrollIndicator = false
         $0.showsHorizontalScrollIndicator = false
-//        $0.register(TotalFoodCell.self, forCellWithReuseIdentifier: TotalFoodCell.reuseIdentifier)
+        $0.register(TxtFileCell.self, forCellWithReuseIdentifier: TxtFileCell.reuseIdentifier)
     }
     
     private var plusImageButton = UIButton().then {
+        // MARK: 이미지의 크기를 포인트로 설정해줄 수 있는 컴포넌트
         let imageConfiguration = UIImage.SymbolConfiguration(pointSize: 60)
         let image = UIImage(systemName: "plus.circle", withConfiguration: imageConfiguration)
         image?.withRenderingMode(.alwaysTemplate)
