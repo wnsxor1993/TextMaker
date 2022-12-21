@@ -34,6 +34,8 @@ final class TxtFileCell: UICollectionViewCell {
         $0.textColor = .darkGray
     }
     
+    private(set) var fileURL: URL? = nil
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         
@@ -49,6 +51,12 @@ final class TxtFileCell: UICollectionViewCell {
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("This class does not support NSCoder")
+    }
+    
+    func setProperties(with item: TxtFileModel) {
+        self.fileURL = item.fileUrl
+        self.titleText.text = item.title
+        self.subText.text = item.subText
     }
 }
 

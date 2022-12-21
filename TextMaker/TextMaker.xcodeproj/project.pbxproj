@@ -19,6 +19,8 @@
 		D2E2E16E29529D6A00627183 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E2E16D29529D6A00627183 /* HomeCoordinator.swift */; };
 		D2E2E1712952A6C300627183 /* UIView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E2E1702952A6C300627183 /* UIView +.swift */; };
 		D2E2E1762952C50300627183 /* TxtFileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E2E1752952C50300627183 /* TxtFileCell.swift */; };
+		D2E2E1792952D0D700627183 /* TxtFileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E2E1782952D0D700627183 /* TxtFileModel.swift */; };
+		D2E2E17C2952D14B00627183 /* MainSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E2E17B2952D14B00627183 /* MainSectionModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		D2E2E16D29529D6A00627183 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		D2E2E1702952A6C300627183 /* UIView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView +.swift"; sourceTree = "<group>"; };
 		D2E2E1752952C50300627183 /* TxtFileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxtFileCell.swift; sourceTree = "<group>"; };
+		D2E2E1782952D0D700627183 /* TxtFileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxtFileModel.swift; sourceTree = "<group>"; };
+		D2E2E17B2952D14B00627183 /* MainSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSectionModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +96,8 @@
 			children = (
 				D2E2E16F2952A6B400627183 /* Extension + */,
 				D2E2E16529529C2300627183 /* Coordinator */,
-				D2E2E1722952C48900627183 /* Scene */,
+				D2E2E1722952C48900627183 /* PresentationLayer */,
+				D2E2E1772952D0A500627183 /* DomainLayer */,
 				D2E2E151295293D900627183 /* AppDelegate.swift */,
 				D2E2E153295293D900627183 /* SceneDelegate.swift */,
 				D2E2E15A295293DA00627183 /* Assets.xcassets */,
@@ -129,20 +134,20 @@
 			path = "Extension +";
 			sourceTree = "<group>";
 		};
-		D2E2E1722952C48900627183 /* Scene */ = {
+		D2E2E1722952C48900627183 /* PresentationLayer */ = {
 			isa = PBXGroup;
 			children = (
-				D2E2E1732952C49000627183 /* Main */,
+				D2E2E1732952C49000627183 /* MainScene */,
 			);
-			path = Scene;
+			path = PresentationLayer;
 			sourceTree = "<group>";
 		};
-		D2E2E1732952C49000627183 /* Main */ = {
+		D2E2E1732952C49000627183 /* MainScene */ = {
 			isa = PBXGroup;
 			children = (
 				D2E2E1742952C4B600627183 /* View */,
 			);
-			path = Main;
+			path = MainScene;
 			sourceTree = "<group>";
 		};
 		D2E2E1742952C4B600627183 /* View */ = {
@@ -152,6 +157,23 @@
 				D2E2E1752952C50300627183 /* TxtFileCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		D2E2E1772952D0A500627183 /* DomainLayer */ = {
+			isa = PBXGroup;
+			children = (
+				D2E2E17A2952D0DD00627183 /* Model */,
+			);
+			path = DomainLayer;
+			sourceTree = "<group>";
+		};
+		D2E2E17A2952D0DD00627183 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D2E2E1782952D0D700627183 /* TxtFileModel.swift */,
+				D2E2E17B2952D14B00627183 /* MainSectionModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,6 +295,8 @@
 				D2E2E156295293D900627183 /* MainViewController.swift in Sources */,
 				D2E2E1712952A6C300627183 /* UIView +.swift in Sources */,
 				D2E2E152295293D900627183 /* AppDelegate.swift in Sources */,
+				D2E2E17C2952D14B00627183 /* MainSectionModel.swift in Sources */,
+				D2E2E1792952D0D700627183 /* TxtFileModel.swift in Sources */,
 				D2E2E154295293D900627183 /* SceneDelegate.swift in Sources */,
 				D2E2E16E29529D6A00627183 /* HomeCoordinator.swift in Sources */,
 				D2E2E16A29529C6600627183 /* ParentCoordinator.swift in Sources */,

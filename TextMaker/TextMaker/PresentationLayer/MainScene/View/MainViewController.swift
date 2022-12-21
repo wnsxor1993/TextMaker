@@ -10,6 +10,7 @@ import Then
 import SnapKit
 import RxSwift
 import RxCocoa
+import RxDataSources
 
 class MainViewController: UIViewController {
 
@@ -21,8 +22,9 @@ class MainViewController: UIViewController {
         $0.sizeToFit()
     }
     
-    private var mainCollectionView = UICollectionView(frame: .zero, collectionViewLayout: .init()).then {
+    private lazy var mainCollectionView = UICollectionView(frame: .zero, collectionViewLayout: .init()).then {
         let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: self.view.frame.width, height: 40)
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 5
         
@@ -44,11 +46,14 @@ class MainViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
     
+    private var collectionViewDataSource: RxCollectionViewSectionedReloadDataSource<MainSectionModel>?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = .white
         self.configureLayouts()
+        self.configureCollectionViewDataSource()
     }
 }
 
@@ -72,5 +77,20 @@ private extension MainViewController {
             make.bottom.equalToSuperview().offset(-80)
             make.width.height.equalTo(80)
         }
+    }
+    
+    func configureCollectionViewDataSource() {
+        self.collectionViewDataSource = RxCollectionViewSectionedReloadDataSource<MainSectionModel>(configureCell: { dataSource, collectionView, indexPath, item in
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TxtFileCell.reuseIdentifier, for: indexPath) as? TxtFileCell else { return }
+            
+            cell.setProperties(with: item)
+            
+            return cell
+        })
+    }
+    
+    func bindInnerAction() {
+        // TODO: Observable이랑 collectionView items 바인딩
+        
     }
 }
