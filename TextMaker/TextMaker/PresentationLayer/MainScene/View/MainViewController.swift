@@ -24,9 +24,9 @@ class MainViewController: UIViewController {
     
     private lazy var mainCollectionView = UICollectionView(frame: .zero, collectionViewLayout: .init()).then {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: self.view.frame.width, height: 40)
+        layout.itemSize = CGSize(width: self.view.frame.width, height: 70)
         layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 5
+        layout.minimumLineSpacing = 10
         
         $0.collectionViewLayout = layout
         $0.showsVerticalScrollIndicator = false
@@ -103,7 +103,8 @@ private extension MainViewController {
     func bindWithViewModel() {
         guard let collectionViewDataSource else { return }
         
-        let input = MainViewModel.Input(tapPlusButton: plusImageButton.rx.tap.asDriver())
+        // MARK: throttle은 일정 시간동안 연속 클릭을 방지해줌
+        let input = MainViewModel.Input(tapPlusButton: plusImageButton.rx.tap.asDriver().throttle(.seconds(1), latest: false))
         let output = mainVM.transform(with: input)
         
         output.collectionSectionModels

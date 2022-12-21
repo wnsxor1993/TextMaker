@@ -72,14 +72,14 @@ private extension TxtFileCell {
         }
         
         titleText.snp.makeConstraints { make in
-            make.leading.equalTo(imageView).offset(10)
+            make.leading.equalTo(imageView.snp.trailing).offset(10)
             make.trailing.equalToSuperview().offset(-10)
             make.top.equalToSuperview()
             make.height.equalToSuperview().dividedBy(2)
         }
         
         subText.snp.makeConstraints { make in
-            make.leading.equalTo(imageView).offset(10)
+            make.leading.equalTo(imageView.snp.trailing).offset(10)
             make.trailing.equalToSuperview().offset(-10)
             make.top.equalTo(titleText.snp.bottom)
             make.bottom.equalToSuperview()

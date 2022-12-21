@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9FA51FDCDB6EF162617B2CE6 /* Pods_TextMaker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A12E3557FA3EB099780BAA67 /* Pods_TextMaker.framework */; };
+		42380EF7AE5327D2924D95BC /* Pods_TextMaker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 264F9242E0516312A89B6C0B /* Pods_TextMaker.framework */; };
 		D2E2E152295293D900627183 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E2E151295293D900627183 /* AppDelegate.swift */; };
 		D2E2E154295293D900627183 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E2E153295293D900627183 /* SceneDelegate.swift */; };
 		D2E2E156295293D900627183 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E2E155295293D900627183 /* MainViewController.swift */; };
@@ -25,9 +25,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		116A8B39FDCC1522C6F7C88D /* Pods-TextMaker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextMaker.release.xcconfig"; path = "Target Support Files/Pods-TextMaker/Pods-TextMaker.release.xcconfig"; sourceTree = "<group>"; };
-		8CCFCAB4D253052ECC2C20C4 /* Pods-TextMaker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextMaker.debug.xcconfig"; path = "Target Support Files/Pods-TextMaker/Pods-TextMaker.debug.xcconfig"; sourceTree = "<group>"; };
-		A12E3557FA3EB099780BAA67 /* Pods_TextMaker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TextMaker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		264F9242E0516312A89B6C0B /* Pods_TextMaker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TextMaker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		88F3B7FFBA66FB70CAD1B954 /* Pods-TextMaker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextMaker.debug.xcconfig"; path = "Target Support Files/Pods-TextMaker/Pods-TextMaker.debug.xcconfig"; sourceTree = "<group>"; };
+		B2FBDBD8EB17DB032341FC69 /* Pods-TextMaker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextMaker.release.xcconfig"; path = "Target Support Files/Pods-TextMaker/Pods-TextMaker.release.xcconfig"; sourceTree = "<group>"; };
 		D2E2E14E295293D900627183 /* TextMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2E2E151295293D900627183 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2E2E153295293D900627183 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,17 +51,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9FA51FDCDB6EF162617B2CE6 /* Pods_TextMaker.framework in Frameworks */,
+				42380EF7AE5327D2924D95BC /* Pods_TextMaker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		658F903A043822D9A3379139 /* Frameworks */ = {
+		322B22ED51E82E9FBFD8573F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A12E3557FA3EB099780BAA67 /* Pods_TextMaker.framework */,
+				264F9242E0516312A89B6C0B /* Pods_TextMaker.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -69,8 +69,8 @@
 		7E8C86077C4B3E8A308F451A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				8CCFCAB4D253052ECC2C20C4 /* Pods-TextMaker.debug.xcconfig */,
-				116A8B39FDCC1522C6F7C88D /* Pods-TextMaker.release.xcconfig */,
+				88F3B7FFBA66FB70CAD1B954 /* Pods-TextMaker.debug.xcconfig */,
+				B2FBDBD8EB17DB032341FC69 /* Pods-TextMaker.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -81,7 +81,7 @@
 				D2E2E150295293D900627183 /* TextMaker */,
 				D2E2E14F295293D900627183 /* Products */,
 				7E8C86077C4B3E8A308F451A /* Pods */,
-				658F903A043822D9A3379139 /* Frameworks */,
+				322B22ED51E82E9FBFD8573F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -194,11 +194,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D2E2E162295293DA00627183 /* Build configuration list for PBXNativeTarget "TextMaker" */;
 			buildPhases = (
-				42C21E0F34A57308CE41E96D /* [CP] Check Pods Manifest.lock */,
+				2F769573E52FD40883F5E408 /* [CP] Check Pods Manifest.lock */,
 				D2E2E14A295293D900627183 /* Sources */,
 				D2E2E14B295293D900627183 /* Frameworks */,
 				D2E2E14C295293D900627183 /* Resources */,
-				EF040AF9F51A01A866C15967 /* [CP] Embed Pods Frameworks */,
+				C845A780835E48DAD248F73F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -255,7 +255,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		42C21E0F34A57308CE41E96D /* [CP] Check Pods Manifest.lock */ = {
+		2F769573E52FD40883F5E408 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -277,7 +277,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EF040AF9F51A01A866C15967 /* [CP] Embed Pods Frameworks */ = {
+		C845A780835E48DAD248F73F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -446,7 +446,7 @@
 		};
 		D2E2E163295293DA00627183 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8CCFCAB4D253052ECC2C20C4 /* Pods-TextMaker.debug.xcconfig */;
+			baseConfigurationReference = 88F3B7FFBA66FB70CAD1B954 /* Pods-TextMaker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -475,7 +475,7 @@
 		};
 		D2E2E164295293DA00627183 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 116A8B39FDCC1522C6F7C88D /* Pods-TextMaker.release.xcconfig */;
+			baseConfigurationReference = B2FBDBD8EB17DB032341FC69 /* Pods-TextMaker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

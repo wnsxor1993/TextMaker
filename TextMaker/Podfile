@@ -8,13 +8,13 @@ target 'TextMaker' do
   # Pods for TextMaker
 
   # RxSwift
-  pod 'RxSwift'
-  pod 'RxCocoa'
+  pod 'RxSwift', '6.5.0'
+  pod 'RxCocoa', '6.5.0'
   pod 'RxGesture'
-  pod 'RxDataSources'
+  pod 'RxDataSources', '~> 5.0'
 
   # SnapKit
-  pod 'SnapKit'
+  pod 'SnapKit', '~> 5.6.0'
 
   # Then
   pod 'Then'
