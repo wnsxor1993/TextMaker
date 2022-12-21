@@ -10,6 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    private var appCoordinator: ParentCoordinator?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
@@ -18,6 +19,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let naviController = UINavigationController()
         naviController.isNavigationBarHidden = true
+        
+        self.appCoordinator = AppCoordinator(naviController)
+        self.appCoordinator?.start()
+        
+        self.window?.rootViewController = naviController
+        self.window?.makeKeyAndVisible()
     }
 }
 
