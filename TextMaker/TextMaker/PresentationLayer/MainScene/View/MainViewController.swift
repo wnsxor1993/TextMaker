@@ -44,7 +44,8 @@ class MainViewController: UIViewController {
         $0.tintColor = .green
     }
     
-    private let disposeBag = DisposeBag()
+    private let mainVM: MainViewModel = .init()
+    private let disposeBag: DisposeBag = .init()
     
     private var collectionViewDataSource: RxCollectionViewSectionedAnimatedDataSource<MainSectionModel>?
     
@@ -54,6 +55,8 @@ class MainViewController: UIViewController {
         self.view.backgroundColor = .white
         self.configureLayouts()
         self.configureCollectionViewDataSource()
+        self.bindInnerAction()
+        self.bindWithViewModel()
     }
 }
 
@@ -81,7 +84,10 @@ private extension MainViewController {
     
     func configureCollectionViewDataSource() {
         self.collectionViewDataSource = RxCollectionViewSectionedAnimatedDataSource<MainSectionModel>(animationConfiguration: .init(insertAnimation: .top, reloadAnimation: .fade, deleteAnimation: .left)) { dataSource, collectionView, indexPath, item in
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TxtFileCell.reuseIdentifier, for: indexPath) as? TxtFileCell else { return }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TxtFileCell.reuseIdentifier, for: indexPath) as? TxtFileCell else {
+                
+                return .init()
+            }
             
             cell.setProperties(with: item)
             
@@ -92,5 +98,16 @@ private extension MainViewController {
     func bindInnerAction() {
         // TODO: Observable이랑 collectionView items 바인딩
         
+    }
+    
+    func bindWithViewModel() {
+        guard let collectionViewDataSource else { return }
+        
+        let input = MainViewModel.Input(tapPlusButton: plusImageButton.rx.tap.asDriver())
+        let output = mainVM.transform(with: input)
+        
+        output.collectionSectionModels
+            .bind(to: mainCollectionView.rx.items(dataSource: collectionViewDataSource))
+            .disposed(by: disposeBag)
     }
 }
