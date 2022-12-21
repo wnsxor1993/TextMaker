@@ -21,6 +21,7 @@
 		D2E2E1762952C50300627183 /* TxtFileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E2E1752952C50300627183 /* TxtFileCell.swift */; };
 		D2E2E1792952D0D700627183 /* TxtFileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E2E1782952D0D700627183 /* TxtFileModel.swift */; };
 		D2E2E17C2952D14B00627183 /* MainSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E2E17B2952D14B00627183 /* MainSectionModel.swift */; };
+		D2E2E17F2952D81800627183 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E2E17E2952D81800627183 /* MainViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		D2E2E1752952C50300627183 /* TxtFileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxtFileCell.swift; sourceTree = "<group>"; };
 		D2E2E1782952D0D700627183 /* TxtFileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxtFileModel.swift; sourceTree = "<group>"; };
 		D2E2E17B2952D14B00627183 /* MainSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSectionModel.swift; sourceTree = "<group>"; };
+		D2E2E17E2952D81800627183 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 		D2E2E1732952C49000627183 /* MainScene */ = {
 			isa = PBXGroup;
 			children = (
+				D2E2E17D2952D80C00627183 /* ViewModel */,
 				D2E2E1742952C4B600627183 /* View */,
 			);
 			path = MainScene;
@@ -174,6 +177,14 @@
 				D2E2E17B2952D14B00627183 /* MainSectionModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D2E2E17D2952D80C00627183 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D2E2E17E2952D81800627183 /* MainViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,6 +312,7 @@
 				D2E2E16E29529D6A00627183 /* HomeCoordinator.swift in Sources */,
 				D2E2E16A29529C6600627183 /* ParentCoordinator.swift in Sources */,
 				D2E2E1762952C50300627183 /* TxtFileCell.swift in Sources */,
+				D2E2E17F2952D81800627183 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

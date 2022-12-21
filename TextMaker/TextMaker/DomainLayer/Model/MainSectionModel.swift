@@ -13,9 +13,15 @@ struct MainSectionModel {
     var items: [TxtFileModel]
 }
 
-extension MainSectionModel: SectionModelType {
+extension MainSectionModel: AnimatableSectionModelType {
     
     typealias Item = TxtFileModel
+    typealias Identity = String
+    
+    var identity: String {
+        
+        return header
+    }
     
     init(original: MainSectionModel, items: [TxtFileModel]) {
         self = original

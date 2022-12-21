@@ -46,7 +46,7 @@ class MainViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
     
-    private var collectionViewDataSource: RxCollectionViewSectionedReloadDataSource<MainSectionModel>?
+    private var collectionViewDataSource: RxCollectionViewSectionedAnimatedDataSource<MainSectionModel>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,13 +80,13 @@ private extension MainViewController {
     }
     
     func configureCollectionViewDataSource() {
-        self.collectionViewDataSource = RxCollectionViewSectionedReloadDataSource<MainSectionModel>(configureCell: { dataSource, collectionView, indexPath, item in
+        self.collectionViewDataSource = RxCollectionViewSectionedAnimatedDataSource<MainSectionModel>(animationConfiguration: .init(insertAnimation: .top, reloadAnimation: .fade, deleteAnimation: .left)) { dataSource, collectionView, indexPath, item in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TxtFileCell.reuseIdentifier, for: indexPath) as? TxtFileCell else { return }
             
             cell.setProperties(with: item)
             
             return cell
-        })
+        }
     }
     
     func bindInnerAction() {
