@@ -19,14 +19,13 @@ final class MainViewModel {
     }
     
     private let disposeBag = DisposeBag()
+    private let output = Output()
     
     private var temporaryInt = 1
     private var originMainSections: MainSectionModel = .init(header: "First", items: [])
     private var originMainItems: [TxtFileModel] = []
     
     func transform(with input: Input) -> Output {
-        let output = Output()
-        
         input.tapPlusButton
             .drive { [weak self] _ in
                 guard let self, let documentURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
@@ -39,12 +38,23 @@ final class MainViewModel {
                 self.originMainItems.append(item)
                 
                 let section = MainSectionModel(original: self.originMainSections, items: self.originMainItems)
-                output.collectionSectionModels.accept([section])
+                self.originMainSections = section
+                self.output.collectionSectionModels.accept([section])
                 
                 self.temporaryInt += 1
             }
             .disposed(by: disposeBag)
         
         return output
+    }
+    
+    func removeCell(with indexPath: [IndexPath]) {
+        guard let row = indexPath.first?.row, let _ = originMainItems[safe: row] else { return }
+        
+        self.originMainItems.remove(at: row)
+        
+        let section = MainSectionModel(original: self.originMainSections, items: self.originMainItems)
+        self.originMainSections = section
+        self.output.collectionSectionModels.accept([section])
     }
 }

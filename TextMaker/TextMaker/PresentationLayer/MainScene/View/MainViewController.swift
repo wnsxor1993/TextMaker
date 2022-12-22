@@ -11,6 +11,7 @@ import SnapKit
 import RxSwift
 import RxCocoa
 import RxDataSources
+import RxGesture
 
 class MainViewController: UIViewController {
 
@@ -28,6 +29,7 @@ class MainViewController: UIViewController {
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 10
         
+        $0.backgroundColor = .white
         $0.collectionViewLayout = layout
         $0.showsVerticalScrollIndicator = false
         $0.showsHorizontalScrollIndicator = false
@@ -43,6 +45,8 @@ class MainViewController: UIViewController {
         $0.setImage(image, for: .normal)
         $0.tintColor = .green
     }
+    
+    private var cellIndexPathForDelete: [IndexPath] = []
     
     private let mainVM: MainViewModel = .init()
     private let disposeBag: DisposeBag = .init()
@@ -97,7 +101,8 @@ private extension MainViewController {
     
     func bindInnerAction() {
         // TODO: Observable이랑 collectionView items 바인딩
-        
+        self.mainCollectionView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
     }
     
     func bindWithViewModel() {
@@ -110,5 +115,19 @@ private extension MainViewController {
         output.collectionSectionModels
             .bind(to: mainCollectionView.rx.items(dataSource: collectionViewDataSource))
             .disposed(by: disposeBag)
+    }
+}
+
+extension MainViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemsAt indexPaths: [IndexPath], point: CGPoint) -> UIContextMenuConfiguration? {
+        
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (_: [UIMenuElement]) -> UIMenu? in
+            let deleteAction = UIAction(title: "파일 삭제", image: UIImage(systemName: "trash")) { _ in
+                self.mainVM.removeCell(with: indexPaths)
+            }
+            
+            return UIMenu(children: [deleteAction])
+        }
     }
 }

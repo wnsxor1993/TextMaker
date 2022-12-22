@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		42380EF7AE5327D2924D95BC /* Pods_TextMaker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 264F9242E0516312A89B6C0B /* Pods_TextMaker.framework */; };
+		D2BDAA702953F15600D6AD7C /* Array +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDAA6F2953F15600D6AD7C /* Array +.swift */; };
 		D2E2E152295293D900627183 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E2E151295293D900627183 /* AppDelegate.swift */; };
 		D2E2E154295293D900627183 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E2E153295293D900627183 /* SceneDelegate.swift */; };
 		D2E2E156295293D900627183 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E2E155295293D900627183 /* MainViewController.swift */; };
@@ -28,6 +29,7 @@
 		264F9242E0516312A89B6C0B /* Pods_TextMaker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TextMaker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88F3B7FFBA66FB70CAD1B954 /* Pods-TextMaker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextMaker.debug.xcconfig"; path = "Target Support Files/Pods-TextMaker/Pods-TextMaker.debug.xcconfig"; sourceTree = "<group>"; };
 		B2FBDBD8EB17DB032341FC69 /* Pods-TextMaker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextMaker.release.xcconfig"; path = "Target Support Files/Pods-TextMaker/Pods-TextMaker.release.xcconfig"; sourceTree = "<group>"; };
+		D2BDAA6F2953F15600D6AD7C /* Array +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array +.swift"; sourceTree = "<group>"; };
 		D2E2E14E295293D900627183 /* TextMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2E2E151295293D900627183 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2E2E153295293D900627183 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				D2E2E1702952A6C300627183 /* UIView +.swift */,
+				D2BDAA6F2953F15600D6AD7C /* Array +.swift */,
 			);
 			path = "Extension +";
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				D2E2E156295293D900627183 /* MainViewController.swift in Sources */,
 				D2E2E1712952A6C300627183 /* UIView +.swift in Sources */,
 				D2E2E152295293D900627183 /* AppDelegate.swift in Sources */,
+				D2BDAA702953F15600D6AD7C /* Array +.swift in Sources */,
 				D2E2E17C2952D14B00627183 /* MainSectionModel.swift in Sources */,
 				D2E2E1792952D0D700627183 /* TxtFileModel.swift in Sources */,
 				D2E2E154295293D900627183 /* SceneDelegate.swift in Sources */,
