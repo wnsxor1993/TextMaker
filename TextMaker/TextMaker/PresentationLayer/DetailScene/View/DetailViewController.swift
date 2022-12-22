@@ -8,13 +8,10 @@
 import UIKit
 import SnapKit
 import Then
+import RxSwift
+import RxCocoa
 
 final class DetailViewController: UIViewController {
-    
-    private var backButton: UIButton = .init().then {
-        $0.setTitle("이전", for: .normal)
-        $0.setTitleColor(.blue, for: .normal)
-    }
     
     private var cancelButton: UIButton = .init().then {
         $0.setTitle("취소", for: .normal)
@@ -58,6 +55,8 @@ final class DetailViewController: UIViewController {
     
     weak var navigationDelegate: FormalNavigateDelegate?
     
+    private var disposeBag: DisposeBag = .init()
+    
     init(naviagteDelegate: FormalNavigateDelegate) {
         self.navigationDelegate = naviagteDelegate
         
@@ -74,6 +73,7 @@ final class DetailViewController: UIViewController {
         
         self.view.backgroundColor = .white
         self.configureLayouts()
+        self.bindInnerAction()
     }
     
     override func viewWillLayoutSubviews() {
@@ -86,26 +86,20 @@ final class DetailViewController: UIViewController {
 private extension DetailViewController {
     
     func configureLayouts() {
-        self.view.addSubviews(backButton, cancelButton, verticalStackView, contentTextView, saveButton)
+        self.view.addSubviews(cancelButton, verticalStackView, contentTextView, saveButton)
         verticalStackView.addArrangedSubviews(titleText, titleField, contentText)
         
-        backButton.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(15)
+        cancelButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().offset(-15)
             make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(10)
             make.width.equalTo(60)
             make.height.equalTo(40)
         }
         
-        cancelButton.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().offset(-15)
-            make.top.equalTo(backButton)
-            make.width.height.equalTo(backButton)
-        }
-        
         verticalStackView.snp.makeConstraints { make in
             make.trailing.equalToSuperview()
             make.leading.equalToSuperview().offset(10)
-            make.top.equalTo(backButton.snp.bottom).offset(15)
+            make.top.equalTo(cancelButton.snp.bottom).offset(15)
             make.height.equalToSuperview().multipliedBy(0.15)
         }
         
@@ -138,5 +132,14 @@ private extension DetailViewController {
     
     func configureCornerRound() {
         saveButton.layer.cornerRadius = (saveButton.frame.height / 2)
+    }
+    
+    func bindInnerAction() {
+        self.cancelButton.rx.tap
+            .asDriver { _ in return .never() }
+            .drive { _ in
+                self.navigationDelegate?.pop()
+            }
+            .disposed(by: disposeBag)
     }
 }
