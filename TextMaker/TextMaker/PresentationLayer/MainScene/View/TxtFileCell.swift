@@ -13,7 +13,7 @@ final class TxtFileCell: UICollectionViewCell {
     
     static let reuseIdentifier: String = "TxtFileCell"
     
-    private var imageView = UIImageView().then {
+    private var imageView: UIImageView = .init().then {
         let image = UIImage(systemName: "doc.text")
         image?.withRenderingMode(.alwaysTemplate)
         
@@ -22,16 +22,15 @@ final class TxtFileCell: UICollectionViewCell {
         $0.tintColor = .yellow
     }
     
-    private var titleText = UITextField().then {
-        $0.isEnabled = false
+    private var titleText: UILabel = .init().then {
         $0.font = .systemFont(ofSize: 18, weight: .semibold)
         $0.textColor = .black
     }
     
-    private var subText = UITextField().then {
-        $0.isEnabled = false
+    private var subText: UILabel = .init().then {
         $0.font = .systemFont(ofSize: 15, weight: .regular)
         $0.textColor = .darkGray
+        $0.numberOfLines = 2
     }
     
     private(set) var fileURL: URL? = nil

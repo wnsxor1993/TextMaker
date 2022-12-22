@@ -15,15 +15,14 @@ import RxGesture
 
 class MainViewController: UIViewController {
 
-    private var titleView = UITextField().then {
-        $0.isEnabled = false
+    private var titleView: UILabel = .init().then {
         $0.text = "Text Maker"
         $0.textColor = .lightGray
         $0.font = .systemFont(ofSize: 40, weight: .semibold)
         $0.sizeToFit()
     }
     
-    private lazy var mainCollectionView = UICollectionView(frame: .zero, collectionViewLayout: .init()).then {
+    private lazy var mainCollectionView: UICollectionView = .init(frame: .zero, collectionViewLayout: .init()).then {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: self.view.frame.width, height: 70)
         layout.scrollDirection = .vertical
@@ -36,7 +35,7 @@ class MainViewController: UIViewController {
         $0.register(TxtFileCell.self, forCellWithReuseIdentifier: TxtFileCell.reuseIdentifier)
     }
     
-    private var plusImageButton = UIButton().then {
+    private var plusImageButton: UIButton = .init().then {
         // MARK: 이미지의 크기를 포인트로 설정해줄 수 있는 컴포넌트
         let imageConfiguration = UIImage.SymbolConfiguration(pointSize: 60)
         let image = UIImage(systemName: "plus.circle", withConfiguration: imageConfiguration)
