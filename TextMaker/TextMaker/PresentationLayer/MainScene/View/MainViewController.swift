@@ -50,7 +50,7 @@ class MainViewController: UIViewController {
     private let mainVM: MainViewModel
     private let disposeBag: DisposeBag = .init()
     
-    private var collectionViewDataSource: RxCollectionViewSectionedAnimatedDataSource<MainSectionModel>?
+    private var collectionViewDataSource: RxCollectionViewSectionedAnimatedDataSource<SectionModel>?
     
     init(_ viewModel: MainViewModel, navigateDelegate: FormalNavigateDelegate) {
         self.mainVM = viewModel
@@ -98,7 +98,7 @@ private extension MainViewController {
     }
     
     func configureCollectionViewDataSource() {
-        self.collectionViewDataSource = RxCollectionViewSectionedAnimatedDataSource<MainSectionModel>(animationConfiguration: .init(insertAnimation: .top, reloadAnimation: .fade, deleteAnimation: .left)) { dataSource, collectionView, indexPath, item in
+        self.collectionViewDataSource = RxCollectionViewSectionedAnimatedDataSource<SectionModel>(animationConfiguration: .init(insertAnimation: .top, reloadAnimation: .fade, deleteAnimation: .left)) { dataSource, collectionView, indexPath, item in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TxtFileCell.reuseIdentifier, for: indexPath) as? TxtFileCell else {
                 
                 return .init()
@@ -127,8 +127,8 @@ private extension MainViewController {
     func bindWithViewModel() {
         guard let collectionViewDataSource else { return }
         
-        // MARK: throttle은 일정 시간동안 연속 클릭을 방지해줌
-        let output = mainVM.transform()
+        let input: MainViewModel.Input = .init(viewWillAppearDriver: self.rx.viewWillAppear.asDriver(onErrorJustReturn: false))
+        let output = mainVM.transform(with: input)
         
         output.collectionSectionModels
             .bind(to: mainCollectionView.rx.items(dataSource: collectionViewDataSource))

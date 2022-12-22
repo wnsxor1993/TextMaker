@@ -7,13 +7,13 @@
 
 import RxDataSources
 
-struct MainSectionModel {
+struct SectionModel {
     
     var header: String
     var items: [TxtFileModel]
 }
 
-extension MainSectionModel: AnimatableSectionModelType {
+extension SectionModel: AnimatableSectionModelType {
     
     typealias Item = TxtFileModel
     typealias Identity = String
@@ -23,7 +23,7 @@ extension MainSectionModel: AnimatableSectionModelType {
         return header
     }
     
-    init(original: MainSectionModel, items: [TxtFileModel]) {
+    init(original: SectionModel, items: [TxtFileModel]) {
         self = original
         self.items = items
     }
