@@ -19,7 +19,8 @@ final class HomeCoordinator: ParentCoordinator {
     }
     
     func start() {
-        let mainVC = MainViewController()
+        let mainVM = MainViewModel()
+        let mainVC = MainViewController(mainVM)
         
         self.navigationController.setViewControllers([mainVC], animated: false)
     }

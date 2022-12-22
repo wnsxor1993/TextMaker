@@ -48,10 +48,21 @@ class MainViewController: UIViewController {
     
     private var cellIndexPathForDelete: [IndexPath] = []
     
-    private let mainVM: MainViewModel = .init()
+    private let mainVM: MainViewModel
     private let disposeBag: DisposeBag = .init()
     
     private var collectionViewDataSource: RxCollectionViewSectionedAnimatedDataSource<MainSectionModel>?
+    
+    init(_ viewModel: MainViewModel) {
+        self.mainVM = viewModel
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("Does not use this initializer")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		42380EF7AE5327D2924D95BC /* Pods_TextMaker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 264F9242E0516312A89B6C0B /* Pods_TextMaker.framework */; };
 		D2BDAA702953F15600D6AD7C /* Array +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDAA6F2953F15600D6AD7C /* Array +.swift */; };
+		D2BDAA742954127F00D6AD7C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDAA732954127F00D6AD7C /* DetailViewController.swift */; };
 		D2E2E152295293D900627183 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E2E151295293D900627183 /* AppDelegate.swift */; };
 		D2E2E154295293D900627183 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E2E153295293D900627183 /* SceneDelegate.swift */; };
 		D2E2E156295293D900627183 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E2E155295293D900627183 /* MainViewController.swift */; };
@@ -30,6 +31,7 @@
 		88F3B7FFBA66FB70CAD1B954 /* Pods-TextMaker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextMaker.debug.xcconfig"; path = "Target Support Files/Pods-TextMaker/Pods-TextMaker.debug.xcconfig"; sourceTree = "<group>"; };
 		B2FBDBD8EB17DB032341FC69 /* Pods-TextMaker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextMaker.release.xcconfig"; path = "Target Support Files/Pods-TextMaker/Pods-TextMaker.release.xcconfig"; sourceTree = "<group>"; };
 		D2BDAA6F2953F15600D6AD7C /* Array +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array +.swift"; sourceTree = "<group>"; };
+		D2BDAA732954127F00D6AD7C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		D2E2E14E295293D900627183 /* TextMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2E2E151295293D900627183 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2E2E153295293D900627183 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +77,22 @@
 				B2FBDBD8EB17DB032341FC69 /* Pods-TextMaker.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		D2BDAA712954124500D6AD7C /* DetailScene */ = {
+			isa = PBXGroup;
+			children = (
+				D2BDAA722954127500D6AD7C /* View */,
+			);
+			path = DetailScene;
+			sourceTree = "<group>";
+		};
+		D2BDAA722954127500D6AD7C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D2BDAA732954127F00D6AD7C /* DetailViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		D2E2E145295293D900627183 = {
@@ -143,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				D2E2E1732952C49000627183 /* MainScene */,
+				D2BDAA712954124500D6AD7C /* DetailScene */,
 			);
 			path = PresentationLayer;
 			sourceTree = "<group>";
@@ -317,6 +336,7 @@
 				D2E2E16A29529C6600627183 /* ParentCoordinator.swift in Sources */,
 				D2E2E1762952C50300627183 /* TxtFileCell.swift in Sources */,
 				D2E2E17F2952D81800627183 /* MainViewModel.swift in Sources */,
+				D2BDAA742954127F00D6AD7C /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
