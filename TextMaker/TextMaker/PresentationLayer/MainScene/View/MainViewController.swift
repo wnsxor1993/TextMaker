@@ -45,15 +45,16 @@ class MainViewController: UIViewController {
         $0.tintColor = .green
     }
     
-    private var cellIndexPathForDelete: [IndexPath] = []
+    weak var navigationDelegate: FormalNavigateDelegate?
     
     private let mainVM: MainViewModel
     private let disposeBag: DisposeBag = .init()
     
     private var collectionViewDataSource: RxCollectionViewSectionedAnimatedDataSource<MainSectionModel>?
     
-    init(_ viewModel: MainViewModel) {
+    init(_ viewModel: MainViewModel, navigateDelegate: FormalNavigateDelegate) {
         self.mainVM = viewModel
+        self.navigationDelegate = navigateDelegate
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -113,14 +114,21 @@ private extension MainViewController {
         // TODO: Observable이랑 collectionView items 바인딩
         self.mainCollectionView.rx.setDelegate(self)
             .disposed(by: disposeBag)
+        
+        self.plusImageButton.rx.tap
+            .asDriver()
+            .throttle(.seconds(1), latest: false)
+            .drive { [weak self] _ in
+                self?.navigationDelegate?.push()
+            }
+            .disposed(by: disposeBag)
     }
     
     func bindWithViewModel() {
         guard let collectionViewDataSource else { return }
         
         // MARK: throttle은 일정 시간동안 연속 클릭을 방지해줌
-        let input = MainViewModel.Input(tapPlusButton: plusImageButton.rx.tap.asDriver().throttle(.seconds(1), latest: false))
-        let output = mainVM.transform(with: input)
+        let output = mainVM.transform()
         
         output.collectionSectionModels
             .bind(to: mainCollectionView.rx.items(dataSource: collectionViewDataSource))

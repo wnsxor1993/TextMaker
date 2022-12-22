@@ -11,6 +11,8 @@
 		D2BDAA702953F15600D6AD7C /* Array +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDAA6F2953F15600D6AD7C /* Array +.swift */; };
 		D2BDAA742954127F00D6AD7C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDAA732954127F00D6AD7C /* DetailViewController.swift */; };
 		D2BDAA762954197700D6AD7C /* UIStackView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDAA752954197700D6AD7C /* UIStackView +.swift */; };
+		D2BDAA7829541BC000D6AD7C /* DetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDAA7729541BC000D6AD7C /* DetailCoordinator.swift */; };
+		D2BDAA7B29541C0100D6AD7C /* FormalNavigateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDAA7A29541C0100D6AD7C /* FormalNavigateDelegate.swift */; };
 		D2E2E152295293D900627183 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E2E151295293D900627183 /* AppDelegate.swift */; };
 		D2E2E154295293D900627183 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E2E153295293D900627183 /* SceneDelegate.swift */; };
 		D2E2E156295293D900627183 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E2E155295293D900627183 /* MainViewController.swift */; };
@@ -34,6 +36,8 @@
 		D2BDAA6F2953F15600D6AD7C /* Array +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array +.swift"; sourceTree = "<group>"; };
 		D2BDAA732954127F00D6AD7C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		D2BDAA752954197700D6AD7C /* UIStackView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView +.swift"; sourceTree = "<group>"; };
+		D2BDAA7729541BC000D6AD7C /* DetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoordinator.swift; sourceTree = "<group>"; };
+		D2BDAA7A29541C0100D6AD7C /* FormalNavigateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormalNavigateDelegate.swift; sourceTree = "<group>"; };
 		D2E2E14E295293D900627183 /* TextMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2E2E151295293D900627183 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2E2E153295293D900627183 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +101,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		D2BDAA7929541BDB00D6AD7C /* delegate */ = {
+			isa = PBXGroup;
+			children = (
+				D2BDAA7A29541C0100D6AD7C /* FormalNavigateDelegate.swift */,
+			);
+			path = delegate;
+			sourceTree = "<group>";
+		};
 		D2E2E145295293D900627183 = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +148,8 @@
 			children = (
 				D2E2E16B29529C9C00627183 /* AppCoordinator.swift */,
 				D2E2E16D29529D6A00627183 /* HomeCoordinator.swift */,
+				D2BDAA7729541BC000D6AD7C /* DetailCoordinator.swift */,
+				D2BDAA7929541BDB00D6AD7C /* delegate */,
 				D2E2E16629529C3100627183 /* protocol */,
 			);
 			path = Coordinator;
@@ -328,6 +342,7 @@
 			files = (
 				D2E2E16C29529C9C00627183 /* AppCoordinator.swift in Sources */,
 				D2E2E16829529C4000627183 /* Coordinator.swift in Sources */,
+				D2BDAA7B29541C0100D6AD7C /* FormalNavigateDelegate.swift in Sources */,
 				D2E2E156295293D900627183 /* MainViewController.swift in Sources */,
 				D2E2E1712952A6C300627183 /* UIView +.swift in Sources */,
 				D2E2E152295293D900627183 /* AppDelegate.swift in Sources */,
@@ -335,6 +350,7 @@
 				D2BDAA762954197700D6AD7C /* UIStackView +.swift in Sources */,
 				D2E2E17C2952D14B00627183 /* MainSectionModel.swift in Sources */,
 				D2E2E1792952D0D700627183 /* TxtFileModel.swift in Sources */,
+				D2BDAA7829541BC000D6AD7C /* DetailCoordinator.swift in Sources */,
 				D2E2E154295293D900627183 /* SceneDelegate.swift in Sources */,
 				D2E2E16E29529D6A00627183 /* HomeCoordinator.swift in Sources */,
 				D2E2E16A29529C6600627183 /* ParentCoordinator.swift in Sources */,

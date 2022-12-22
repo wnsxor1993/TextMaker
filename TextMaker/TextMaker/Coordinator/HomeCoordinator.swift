@@ -20,7 +20,7 @@ final class HomeCoordinator: ParentCoordinator {
     
     func start() {
         let mainVM = MainViewModel()
-        let mainVC = MainViewController(mainVM)
+        let mainVC = MainViewController(mainVM, navigateDelegate: self)
         
         self.navigationController.setViewControllers([mainVC], animated: false)
     }
@@ -29,5 +29,19 @@ final class HomeCoordinator: ParentCoordinator {
         guard let index = childCoordinators.firstIndex(where: { $0 === childCoordinator }) else { return }
         
         self.childCoordinators.remove(at: index)
+    }
+}
+
+extension HomeCoordinator: FormalNavigateDelegate {
+    
+    func push() {
+        let coor: Coordinator = DetailCoordinator(self.navigationController, with: self)
+        self.childCoordinators.append(coor)
+        
+        coor.start()
+    }
+    
+    func pop() {
+        
     }
 }
