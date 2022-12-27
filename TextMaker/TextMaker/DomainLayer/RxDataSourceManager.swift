@@ -12,6 +12,8 @@ final class RxDataSourceManager {
     
     static let shared: RxDataSourceManager = .init()
     
+    private let txtFileManger: TextFileManager = .init()
+    
     private var allSections: [SectionModel] = []
     private var mainSection: SectionModel?
     private var mainSectionItems: [TxtFileModel] = []
@@ -25,41 +27,22 @@ final class RxDataSourceManager {
     }
     
     func createFileData(title: String, context: String) {
-        guard let documentURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        guard let fileURL = self.txtFileManger.createTextFile(title: title, context: context) else { return }
         
-        var fileURL = documentURL
+        let newItem: TxtFileModel = .init(fileUrl: fileURL, title: title, subText: context)
+        self.mainSectionItems.append(newItem)
         
-        if #available(iOS 16.0, *) {
-            fileURL = documentURL.appending(path: "\(title).txt")
-        } else {
-            fileURL = documentURL.appendingPathComponent("\(title).txt")
-        }
+        guard let mainSection else { return }
         
-        do {
-            try context.write(to: fileURL, atomically: true, encoding: .utf8)
-            
-            let newItem: TxtFileModel = .init(fileUrl: fileURL, title: title, subText: context)
-            self.mainSectionItems.append(newItem)
-            
-            guard let mainSection else { return }
-            
-            let newSection: SectionModel = .init(original: mainSection, items: self.mainSectionItems)
-            self.mainSection = newSection
-            self.allSections = [newSection]
-            
-        } catch(let error) {
-            NSLog("\(title) file can't create: \(error.localizedDescription)")
-            
-            return
-        }
+        let newSection: SectionModel = .init(original: mainSection, items: self.mainSectionItems)
+        self.mainSection = newSection
+        self.allSections = [newSection]
     }
     
     func removeFileData(with indexPath: [IndexPath]) {
         guard let sectionIndex = indexPath.first?.section, let rowIndex = indexPath.first?.row, var section = allSections[safe: sectionIndex], let item = section.items[safe: rowIndex] else { return }
         
-        do {
-            try FileManager.default.removeItem(at: item.fileUrl)
-            
+        if self.txtFileManger.removeTextFile(with: item.fileUrl) {
             section.items.remove(at: sectionIndex)
             
             guard let mainSection else { return }
@@ -67,11 +50,6 @@ final class RxDataSourceManager {
             let newSection: SectionModel = .init(original: mainSection, items: section.items)
             self.mainSection = newSection
             self.allSections[sectionIndex] = newSection
-            
-        } catch {
-            NSLog("\(item.title) file can't remove")
-            
-            return
         }
     }
 }
@@ -79,11 +57,11 @@ final class RxDataSourceManager {
 private extension RxDataSourceManager {
     
     func fetchFileDatas() {
-        guard let documentURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first, let fileLists = try? FileManager.default.contentsOfDirectory(at: documentURL, includingPropertiesForKeys: nil) else { return }
+        guard let fileURLs = self.txtFileManger.fetchAllTextFilesURL() else { return }
         
         var sectionItems: [TxtFileModel] = []
         
-        fileLists.forEach {
+        fileURLs.forEach {
             guard let content = try? String(contentsOf: $0, encoding: .utf8) else { return }
             
             let title = $0.lastPathComponent

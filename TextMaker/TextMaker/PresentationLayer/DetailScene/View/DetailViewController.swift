@@ -61,9 +61,10 @@ final class DetailViewController: UIViewController {
     weak var navigationDelegate: PopNavigateDelegate?
     
     private var disposeBag: DisposeBag = .init()
-    private let detailVM: DetailViewModel = .init()
+    private let detailVM: DetailViewModel
     
-    init(popNaviagteDelegate: PopNavigateDelegate) {
+    init(with viewModel: DetailViewModel, popNaviagteDelegate: PopNavigateDelegate) {
+        self.detailVM = viewModel
         self.navigationDelegate = popNaviagteDelegate
         
         super.init(nibName: nil, bundle: nil)

@@ -20,7 +20,8 @@ final class DetailCoordinator: Coordinator {
     }
     
     func start() {
-        let detailVC = DetailViewController(popNaviagteDelegate: self)
+        let detailVM: DetailViewModel = .init()
+        let detailVC: DetailViewController = .init(with: detailVM, popNaviagteDelegate: self)
         
         if let txtFileModel {
             detailVC.setProperties(with: txtFileModel)
