@@ -27,7 +27,13 @@ final class RxDataSourceManager {
     func createFileData(title: String, context: String) {
         guard let documentURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
         
-        let fileURL = documentURL.appendingPathExtension("\(title).txt")
+        var fileURL = documentURL
+        
+        if #available(iOS 16.0, *) {
+            fileURL = documentURL.appending(path: "\(title).txt")
+        } else {
+            fileURL = documentURL.appendingPathComponent("\(title).txt")
+        }
         
         do {
             try context.write(to: fileURL, atomically: true, encoding: .utf8)
@@ -41,8 +47,8 @@ final class RxDataSourceManager {
             self.mainSection = newSection
             self.allSections = [newSection]
             
-        } catch {
-            NSLog("\(title) file can't create")
+        } catch(let error) {
+            NSLog("\(title) file can't create: \(error.localizedDescription)")
             
             return
         }
