@@ -201,5 +201,13 @@ private extension DetailViewController {
                 self?.configureSaveButtonAttributes(with: isEnabled)
             }
             .disposed(by: disposeBag)
+        
+        output.saveFileEnableRelay
+            .subscribe { [weak self] isEnabled in
+                guard isEnabled else { return }
+                
+                self?.navigationDelegate?.pop()
+            }
+            .disposed(by: disposeBag)
     }
 }

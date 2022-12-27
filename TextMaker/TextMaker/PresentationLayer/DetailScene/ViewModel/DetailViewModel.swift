@@ -18,6 +18,7 @@ final class DetailViewModel {
     
     struct Output {
         let buttonEnableRelay: PublishRelay<Bool> = .init()
+        let saveFileEnableRelay: PublishRelay<Bool> = .init()
     }
     
     private let disposeBag: DisposeBag = .init()
@@ -36,6 +37,7 @@ final class DetailViewModel {
                 guard let self else { return }
                 
                 self.dataSourceManager.createFileData(title: self.inputTitleText, context: self.inputContentText)
+                self.output.saveFileEnableRelay.accept(true)
             }
             .disposed(by: disposeBag)
         
