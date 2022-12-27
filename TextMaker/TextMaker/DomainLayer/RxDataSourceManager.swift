@@ -24,7 +24,7 @@ final class RxDataSourceManager {
         return self.allSections
     }
     
-    func createFileData(with url: URL, title: String, context: String) {
+    func createFileData(title: String, context: String) {
         guard let documentURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
         
         let fileURL = documentURL.appendingPathExtension("\(title).txt")
@@ -32,7 +32,7 @@ final class RxDataSourceManager {
         do {
             try context.write(to: fileURL, atomically: true, encoding: .utf8)
             
-            let newItem: TxtFileModel = .init(fileUrl: url, title: title, subText: context)
+            let newItem: TxtFileModel = .init(fileUrl: fileURL, title: title, subText: context)
             self.mainSectionItems.append(newItem)
             
             guard let mainSection else { return }
