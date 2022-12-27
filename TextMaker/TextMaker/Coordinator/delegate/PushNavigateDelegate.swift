@@ -7,8 +7,7 @@
 
 import Foundation
 
-protocol FormalNavigateDelegate: AnyObject {
+protocol PushNavigateDelegate: AnyObject {
     
-    func push()
-    func pop()
+    func push(_ model: TxtFileModel?)
 }

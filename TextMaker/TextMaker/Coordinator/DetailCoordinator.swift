@@ -11,24 +11,26 @@ final class DetailCoordinator: Coordinator {
     
     weak var parentCoordinator: ParentCoordinator?
     var navigationController: UINavigationController
+    private var txtFileModel: TxtFileModel?
     
-    init(_ navigation: UINavigationController, with parent: ParentCoordinator) {
+    init(_ navigation: UINavigationController, with parent: ParentCoordinator, model: TxtFileModel?) {
         self.navigationController = navigation
         self.parentCoordinator = parent
+        self.txtFileModel = model
     }
     
     func start() {
-        let detailVC = DetailViewController(naviagteDelegate: self)
+        let detailVC = DetailViewController(popNaviagteDelegate: self)
+        
+        if let txtFileModel {
+            detailVC.setProperties(with: txtFileModel)
+        }
         
         self.navigationController.pushViewController(detailVC, animated: true)
     }
 }
 
-extension DetailCoordinator: FormalNavigateDelegate {
-    
-    func push() {
-        
-    }
+extension DetailCoordinator: PopNavigateDelegate {
     
     func pop() {
         self.navigationController.popViewController(animated: true)

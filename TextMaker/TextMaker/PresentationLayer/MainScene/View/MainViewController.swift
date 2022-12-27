@@ -45,16 +45,16 @@ class MainViewController: UIViewController {
         $0.tintColor = .green
     }
     
-    weak var navigationDelegate: FormalNavigateDelegate?
+    weak var navigationDelegate: PushNavigateDelegate?
     
     private let mainVM: MainViewModel
     private let disposeBag: DisposeBag = .init()
     
     private var collectionViewDataSource: RxCollectionViewSectionedAnimatedDataSource<SectionModel>?
     
-    init(_ viewModel: MainViewModel, navigateDelegate: FormalNavigateDelegate) {
+    init(_ viewModel: MainViewModel, pushNavigateDelegate: PushNavigateDelegate) {
         self.mainVM = viewModel
-        self.navigationDelegate = navigateDelegate
+        self.navigationDelegate = pushNavigateDelegate
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -134,11 +134,19 @@ private extension MainViewController {
         self.mainCollectionView.rx.setDelegate(self)
             .disposed(by: disposeBag)
         
+        self.mainCollectionView.rx.modelSelected(TxtFileModel.self)
+            .subscribe { [weak self] model in
+                guard let modelData = model.element else { return }
+                
+                self?.navigationDelegate?.push(modelData)
+            }
+            .disposed(by: disposeBag)
+        
         self.plusImageButton.rx.tap
             .asDriver()
             .throttle(.seconds(1), latest: false)
             .drive { [weak self] _ in
-                self?.navigationDelegate?.push()
+                self?.navigationDelegate?.push(nil)
             }
             .disposed(by: disposeBag)
     }

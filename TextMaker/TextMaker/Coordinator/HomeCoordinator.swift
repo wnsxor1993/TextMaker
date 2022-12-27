@@ -20,7 +20,7 @@ final class HomeCoordinator: ParentCoordinator {
     
     func start() {
         let mainVM = MainViewModel()
-        let mainVC = MainViewController(mainVM, navigateDelegate: self)
+        let mainVC = MainViewController(mainVM, pushNavigateDelegate: self)
         
         self.navigationController.setViewControllers([mainVC], animated: false)
     }
@@ -32,16 +32,12 @@ final class HomeCoordinator: ParentCoordinator {
     }
 }
 
-extension HomeCoordinator: FormalNavigateDelegate {
+extension HomeCoordinator: PushNavigateDelegate {
     
-    func push() {
-        let coor: Coordinator = DetailCoordinator(self.navigationController, with: self)
+    func push(_ model: TxtFileModel? = nil) {
+        let coor: Coordinator = DetailCoordinator(self.navigationController, with: self, model: model)
         self.childCoordinators.append(coor)
         
         coor.start()
-    }
-    
-    func pop() {
-        
     }
 }

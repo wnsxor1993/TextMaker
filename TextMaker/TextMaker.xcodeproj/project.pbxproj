@@ -12,10 +12,11 @@
 		D2BDAA742954127F00D6AD7C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDAA732954127F00D6AD7C /* DetailViewController.swift */; };
 		D2BDAA762954197700D6AD7C /* UIStackView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDAA752954197700D6AD7C /* UIStackView +.swift */; };
 		D2BDAA7829541BC000D6AD7C /* DetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDAA7729541BC000D6AD7C /* DetailCoordinator.swift */; };
-		D2BDAA7B29541C0100D6AD7C /* FormalNavigateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDAA7A29541C0100D6AD7C /* FormalNavigateDelegate.swift */; };
+		D2BDAA7B29541C0100D6AD7C /* PushNavigateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDAA7A29541C0100D6AD7C /* PushNavigateDelegate.swift */; };
 		D2BDAA7D295424F500D6AD7C /* RxSwift +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDAA7C295424F500D6AD7C /* RxSwift +.swift */; };
 		D2BDAA802954277A00D6AD7C /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDAA7F2954277A00D6AD7C /* DetailViewModel.swift */; };
 		D2BDAA83295427E800D6AD7C /* RxDataSourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDAA82295427E800D6AD7C /* RxDataSourceManager.swift */; };
+		D2D6D152295A78CB0001E1C5 /* PopNavigateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D6D151295A78CB0001E1C5 /* PopNavigateDelegate.swift */; };
 		D2E2E152295293D900627183 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E2E151295293D900627183 /* AppDelegate.swift */; };
 		D2E2E154295293D900627183 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E2E153295293D900627183 /* SceneDelegate.swift */; };
 		D2E2E156295293D900627183 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E2E155295293D900627183 /* MainViewController.swift */; };
@@ -40,10 +41,11 @@
 		D2BDAA732954127F00D6AD7C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		D2BDAA752954197700D6AD7C /* UIStackView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView +.swift"; sourceTree = "<group>"; };
 		D2BDAA7729541BC000D6AD7C /* DetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoordinator.swift; sourceTree = "<group>"; };
-		D2BDAA7A29541C0100D6AD7C /* FormalNavigateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormalNavigateDelegate.swift; sourceTree = "<group>"; };
+		D2BDAA7A29541C0100D6AD7C /* PushNavigateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNavigateDelegate.swift; sourceTree = "<group>"; };
 		D2BDAA7C295424F500D6AD7C /* RxSwift +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSwift +.swift"; sourceTree = "<group>"; };
 		D2BDAA7F2954277A00D6AD7C /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		D2BDAA82295427E800D6AD7C /* RxDataSourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxDataSourceManager.swift; sourceTree = "<group>"; };
+		D2D6D151295A78CB0001E1C5 /* PopNavigateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopNavigateDelegate.swift; sourceTree = "<group>"; };
 		D2E2E14E295293D900627183 /* TextMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2E2E151295293D900627183 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2E2E153295293D900627183 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,7 +113,8 @@
 		D2BDAA7929541BDB00D6AD7C /* delegate */ = {
 			isa = PBXGroup;
 			children = (
-				D2BDAA7A29541C0100D6AD7C /* FormalNavigateDelegate.swift */,
+				D2BDAA7A29541C0100D6AD7C /* PushNavigateDelegate.swift */,
+				D2D6D151295A78CB0001E1C5 /* PopNavigateDelegate.swift */,
 			);
 			path = delegate;
 			sourceTree = "<group>";
@@ -367,9 +370,10 @@
 			files = (
 				D2E2E16C29529C9C00627183 /* AppCoordinator.swift in Sources */,
 				D2E2E16829529C4000627183 /* Coordinator.swift in Sources */,
-				D2BDAA7B29541C0100D6AD7C /* FormalNavigateDelegate.swift in Sources */,
+				D2BDAA7B29541C0100D6AD7C /* PushNavigateDelegate.swift in Sources */,
 				D2E2E156295293D900627183 /* MainViewController.swift in Sources */,
 				D2BDAA83295427E800D6AD7C /* RxDataSourceManager.swift in Sources */,
+				D2D6D152295A78CB0001E1C5 /* PopNavigateDelegate.swift in Sources */,
 				D2E2E1712952A6C300627183 /* UIView +.swift in Sources */,
 				D2E2E152295293D900627183 /* AppDelegate.swift in Sources */,
 				D2BDAA702953F15600D6AD7C /* Array +.swift in Sources */,

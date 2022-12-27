@@ -58,13 +58,13 @@ final class DetailViewController: UIViewController {
         $0.isEnabled = false
     }
     
-    weak var navigationDelegate: FormalNavigateDelegate?
+    weak var navigationDelegate: PopNavigateDelegate?
     
     private var disposeBag: DisposeBag = .init()
     private let detailVM: DetailViewModel = .init()
     
-    init(naviagteDelegate: FormalNavigateDelegate) {
-        self.navigationDelegate = naviagteDelegate
+    init(popNaviagteDelegate: PopNavigateDelegate) {
+        self.navigationDelegate = popNaviagteDelegate
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -87,6 +87,11 @@ final class DetailViewController: UIViewController {
         super.viewWillLayoutSubviews()
 
         self.configureCornerRound()
+    }
+    
+    func setProperties(with data: TxtFileModel) {
+        self.titleField.text = data.title
+        self.contentTextView.text = data.subText
     }
 }
 
