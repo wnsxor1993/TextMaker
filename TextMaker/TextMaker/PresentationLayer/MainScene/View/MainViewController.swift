@@ -75,6 +75,21 @@ class MainViewController: UIViewController {
     }
 }
 
+extension MainViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemsAt indexPaths: [IndexPath], point: CGPoint) -> UIContextMenuConfiguration? {
+        
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (_: [UIMenuElement]) -> UIMenu? in
+            let deleteAction = UIAction(title: "파일 삭제", image: UIImage(systemName: "trash")) { _ in
+                self.mainVM.removeCell(with: indexPaths)
+            }
+            
+            return UIMenu(children: [deleteAction])
+        }
+    }
+}
+
+// MARK: View Layout Configure
 private extension MainViewController {
     
     func configureLayouts() {
@@ -109,6 +124,10 @@ private extension MainViewController {
             return cell
         }
     }
+}
+
+// MARK: View Binding
+private extension MainViewController {
     
     func bindInnerAction() {
         // TODO: Observable이랑 collectionView items 바인딩
@@ -133,19 +152,5 @@ private extension MainViewController {
         output.collectionSectionModels
             .bind(to: mainCollectionView.rx.items(dataSource: collectionViewDataSource))
             .disposed(by: disposeBag)
-    }
-}
-
-extension MainViewController: UICollectionViewDelegate {
-    
-    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemsAt indexPaths: [IndexPath], point: CGPoint) -> UIContextMenuConfiguration? {
-        
-        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (_: [UIMenuElement]) -> UIMenu? in
-            let deleteAction = UIAction(title: "파일 삭제", image: UIImage(systemName: "trash")) { _ in
-                self.mainVM.removeCell(with: indexPaths)
-            }
-            
-            return UIMenu(children: [deleteAction])
-        }
     }
 }

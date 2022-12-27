@@ -90,6 +90,7 @@ final class DetailViewController: UIViewController {
     }
 }
 
+// MARK: View Layout Configure
 private extension DetailViewController {
     
     func configureLayouts() {
@@ -153,21 +154,10 @@ private extension DetailViewController {
             self.saveButton.setTitleColor(.green, for: .normal)
         }
     }
-    
-    func bindWithViewModel() {
-        let input = DetailViewModel.Input(titleDriver: titleField.rx.text.distinctUntilChanged().asDriver(onErrorJustReturn: nil),
-                                          contextDriver: contentTextView.rx.text.distinctUntilChanged().asDriver(onErrorJustReturn: nil),
-                                          saveButtonDriver: saveButton.rx.tap.asDriver())
-        let output = detailVM.transform(with: input)
-        
-        output.buttonEnableRelay
-            .distinctUntilChanged()
-            .subscribe { [weak self] isEnabled in
-                self?.saveButton.isEnabled = isEnabled
-                self?.configureSaveButtonAttributes(with: isEnabled)
-            }
-            .disposed(by: disposeBag)
-    }
+}
+
+// MARK: View Binding
+private extension DetailViewController {
     
     func bindInnerAction() {
         self.view.rx.tapGesture()
@@ -189,6 +179,21 @@ private extension DetailViewController {
                 guard self.contentTextView.text == "내용을 입력해주세요" else { return }
                 
                 self.contentTextView.text = ""
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    func bindWithViewModel() {
+        let input = DetailViewModel.Input(titleDriver: titleField.rx.text.distinctUntilChanged().asDriver(onErrorJustReturn: nil),
+                                          contextDriver: contentTextView.rx.text.distinctUntilChanged().asDriver(onErrorJustReturn: nil),
+                                          saveButtonDriver: saveButton.rx.tap.asDriver())
+        let output = detailVM.transform(with: input)
+        
+        output.buttonEnableRelay
+            .distinctUntilChanged()
+            .subscribe { [weak self] isEnabled in
+                self?.saveButton.isEnabled = isEnabled
+                self?.configureSaveButtonAttributes(with: isEnabled)
             }
             .disposed(by: disposeBag)
     }
