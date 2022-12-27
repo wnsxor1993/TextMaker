@@ -62,10 +62,12 @@ final class DetailViewController: UIViewController {
     
     private var disposeBag: DisposeBag = .init()
     private let detailVM: DetailViewModel
+    private let viewCase: DetailViewCase
     
-    init(with viewModel: DetailViewModel, popNaviagteDelegate: PopNavigateDelegate) {
+    init(with viewModel: DetailViewModel, popNaviagteDelegate: PopNavigateDelegate, viewCase: DetailViewCase = .new) {
         self.detailVM = viewModel
         self.navigationDelegate = popNaviagteDelegate
+        self.viewCase = viewCase
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -79,6 +81,7 @@ final class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         self.view.backgroundColor = .white
+        self.configureOldOrNew()
         self.configureLayouts()
         self.bindWithViewModel()
         self.bindInnerAction()
@@ -88,11 +91,6 @@ final class DetailViewController: UIViewController {
         super.viewWillLayoutSubviews()
 
         self.configureCornerRound()
-    }
-    
-    func setProperties(with data: TxtFileModel) {
-        self.titleField.text = data.title
-        self.contentTextView.text = data.subText
     }
 }
 
@@ -141,6 +139,17 @@ private extension DetailViewController {
             make.bottom.equalToSuperview().offset(-50)
             make.height.equalToSuperview().multipliedBy(0.07)
             make.width.equalToSuperview().multipliedBy(0.5)
+        }
+    }
+    
+    func configureOldOrNew() {
+        switch self.viewCase {
+        case .new:
+            break
+            
+        case .old(let model):
+            self.titleField.text = model.title
+            self.contentTextView.text = model.subText
         }
     }
     

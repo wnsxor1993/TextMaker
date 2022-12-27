@@ -24,10 +24,15 @@ final class DetailViewModel {
     private let disposeBag: DisposeBag = .init()
     private let output: Output = .init()
     
+    private let viewCase: DetailViewCase
     private let dataSourceManager = RxDataSourceManager.shared
     
     private var inputTitleText: String = ""
     private var inputContentText: String = ""
+    
+    init(with viewCase: DetailViewCase = .new) {
+        self.viewCase = viewCase
+    }
     
     func transform(with input: Input) -> Output {
         self.checkSaveButtonEnable(with: input)
@@ -36,7 +41,14 @@ final class DetailViewModel {
             .drive { [weak self] _ in
                 guard let self else { return }
                 
-                self.dataSourceManager.createFileData(title: self.inputTitleText, context: self.inputContentText)
+                switch self.viewCase {
+                case .new:
+                    self.dataSourceManager.createFileData(title: self.inputTitleText, context: self.inputContentText)
+                    
+                case .old(let model):
+                    self.dataSourceManager.modifyFileData(with: model, newTitle: self.inputTitleText, newContext: self.inputContentText)
+                }
+                
                 self.output.saveFileEnableRelay.accept(true)
             }
             .disposed(by: disposeBag)

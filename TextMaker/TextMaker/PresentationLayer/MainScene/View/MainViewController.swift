@@ -135,10 +135,10 @@ private extension MainViewController {
             .disposed(by: disposeBag)
         
         self.mainCollectionView.rx.modelSelected(TxtFileModel.self)
-            .subscribe { [weak self] model in
-                guard let modelData = model.element else { return }
+            .subscribe { [weak self] event in
+                guard let model = event.element else { return }
                 
-                self?.navigationDelegate?.push(modelData)
+                self?.navigationDelegate?.push(model)
             }
             .disposed(by: disposeBag)
         

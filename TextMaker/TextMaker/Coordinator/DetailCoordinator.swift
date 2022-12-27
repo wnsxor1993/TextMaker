@@ -11,23 +11,27 @@ final class DetailCoordinator: Coordinator {
     
     weak var parentCoordinator: ParentCoordinator?
     var navigationController: UINavigationController
-    private var txtFileModel: TxtFileModel?
+    private var model: TxtFileModel?
     
     init(_ navigation: UINavigationController, with parent: ParentCoordinator, model: TxtFileModel?) {
         self.navigationController = navigation
         self.parentCoordinator = parent
-        self.txtFileModel = model
+        self.model = model
     }
     
     func start() {
-        let detailVM: DetailViewModel = .init()
-        let detailVC: DetailViewController = .init(with: detailVM, popNaviagteDelegate: self)
-        
-        if let txtFileModel {
-            detailVC.setProperties(with: txtFileModel)
+        if let model {
+            let detailVM: DetailViewModel = .init(with: .old(model))
+            let detailVC: DetailViewController = .init(with: detailVM, popNaviagteDelegate: self, viewCase: .old(model))
+            
+            self.navigationController.pushViewController(detailVC, animated: true)
+            
+        } else {
+            let detailVM: DetailViewModel = .init()
+            let detailVC: DetailViewController = .init(with: detailVM, popNaviagteDelegate: self)
+            
+            self.navigationController.pushViewController(detailVC, animated: true)
         }
-        
-        self.navigationController.pushViewController(detailVC, animated: true)
     }
 }
 
