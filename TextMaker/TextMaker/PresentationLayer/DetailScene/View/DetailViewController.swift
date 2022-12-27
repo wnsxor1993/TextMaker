@@ -10,6 +10,7 @@ import SnapKit
 import Then
 import RxSwift
 import RxCocoa
+import RxGesture
 
 final class DetailViewController: UIViewController {
     
@@ -27,6 +28,7 @@ final class DetailViewController: UIViewController {
     private var titleText: UILabel = .init().then {
         $0.text = "제목"
         $0.font = .systemFont(ofSize: 18, weight: .semibold)
+        $0.textColor = .black
     }
     
     private var titleField: UITextField = .init().then {
@@ -38,11 +40,14 @@ final class DetailViewController: UIViewController {
     private var contentText: UILabel = .init().then {
         $0.text = "내용"
         $0.font = .systemFont(ofSize: 18, weight: .semibold)
+        $0.textColor = .black
     }
     
     private var contentTextView: UITextView = .init().then {
+        $0.text = "내용을 입력해주세요"
         $0.font = .systemFont(ofSize: 15, weight: .regular)
         $0.textColor = .lightGray
+        $0.backgroundColor = .white
     }
     
     private var saveButton: UIButton = .init().then {
@@ -56,6 +61,7 @@ final class DetailViewController: UIViewController {
     weak var navigationDelegate: FormalNavigateDelegate?
     
     private var disposeBag: DisposeBag = .init()
+    private let detailVM: DetailViewModel = .init()
     
     init(naviagteDelegate: FormalNavigateDelegate) {
         self.navigationDelegate = naviagteDelegate
@@ -73,6 +79,7 @@ final class DetailViewController: UIViewController {
         
         self.view.backgroundColor = .white
         self.configureLayouts()
+        self.bindWithViewModel()
         self.bindInnerAction()
     }
     
@@ -134,11 +141,54 @@ private extension DetailViewController {
         saveButton.layer.cornerRadius = (saveButton.frame.height / 2)
     }
     
+    func configureSaveButtonAttributes(with isEnabled: Bool) {
+        if isEnabled {
+            self.saveButton.backgroundColor = .green
+            self.saveButton.layer.borderColor = UIColor.clear.cgColor
+            self.saveButton.setTitleColor(.white, for: .normal)
+            
+        } else {
+            self.saveButton.backgroundColor = .white
+            self.saveButton.layer.borderColor = UIColor.green.cgColor
+            self.saveButton.setTitleColor(.green, for: .normal)
+        }
+    }
+    
+    func bindWithViewModel() {
+        let input = DetailViewModel.Input(titleDriver: titleField.rx.text.distinctUntilChanged().asDriver(onErrorJustReturn: nil),
+                                          contextDriver: contentTextView.rx.text.distinctUntilChanged().asDriver(onErrorJustReturn: nil),
+                                          saveButtonDriver: saveButton.rx.tap.asDriver())
+        let output = detailVM.transform(with: input)
+        
+        output.buttonEnableRelay
+            .distinctUntilChanged()
+            .subscribe { [weak self] isEnabled in
+                self?.saveButton.isEnabled = isEnabled
+                self?.configureSaveButtonAttributes(with: isEnabled)
+            }
+            .disposed(by: disposeBag)
+    }
+    
     func bindInnerAction() {
+        self.view.rx.tapGesture()
+            .subscribe { [weak self] _ in
+                self?.view.endEditing(true)
+            }
+            .disposed(by: disposeBag)
+        
         self.cancelButton.rx.tap
             .asDriver { _ in return .never() }
             .drive { _ in
                 self.navigationDelegate?.pop()
+            }
+            .disposed(by: disposeBag)
+        
+        self.contentTextView.rx.didBeginEditing
+            .asDriver()
+            .drive { _ in
+                guard self.contentTextView.text == "내용을 입력해주세요" else { return }
+                
+                self.contentTextView.text = ""
             }
             .disposed(by: disposeBag)
     }
