@@ -32,7 +32,7 @@ final class RxDataSourceManager {
         guard let fileURL = self.txtFileManger.createTextFile(title: title, context: context) else { return }
         
         let newItem: TxtFileDTO = .init(fileUrl: fileURL, title: title, subText: context)
-        self.mainSectionItems.append(.textFile(newItem))
+        self.mainSectionItems.insert(.textFile(newItem), at: 0)
         
         guard let mainSection else { return }
         
