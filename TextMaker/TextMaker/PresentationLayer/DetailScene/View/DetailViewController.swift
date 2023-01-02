@@ -148,8 +148,11 @@ private extension DetailViewController {
             break
             
         case .old(let model):
-            self.titleField.text = model.title
-            self.contentTextView.text = model.subText
+            switch model {
+            case .textFile(let txtFileDTO):
+                self.titleField.text = txtFileDTO.title
+                self.contentTextView.text = txtFileDTO.subText
+            }
         }
     }
     

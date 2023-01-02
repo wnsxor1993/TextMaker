@@ -10,5 +10,5 @@ import Foundation
 enum DetailViewCase {
     
     case new
-    case old(TxtFileModel)
+    case old(CellModel)
 }

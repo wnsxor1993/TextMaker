@@ -52,7 +52,7 @@ final class TxtFileCell: UICollectionViewCell {
         fatalError("This class does not support NSCoder")
     }
     
-    func setProperties(with item: TxtFileModel) {
+    func setProperties(with item: TxtFileDTO) {
         self.fileURL = item.fileUrl
         self.titleText.text = item.title
         self.subText.text = item.subText

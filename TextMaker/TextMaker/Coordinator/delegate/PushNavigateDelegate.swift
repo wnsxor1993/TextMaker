@@ -9,5 +9,5 @@ import Foundation
 
 protocol PushNavigateDelegate: AnyObject {
     
-    func push(_ model: TxtFileModel?)
+    func push(_ model: CellModel?)
 }

@@ -34,7 +34,7 @@ final class HomeCoordinator: ParentCoordinator {
 
 extension HomeCoordinator: PushNavigateDelegate {
 
-    func push(_ model: TxtFileModel? = nil) {
+    func push(_ model: CellModel? = nil) {
         let coor: Coordinator = DetailCoordinator(self.navigationController, with: self, model: model)
         self.childCoordinators.append(coor)
         

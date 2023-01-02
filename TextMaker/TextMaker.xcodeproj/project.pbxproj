@@ -30,9 +30,10 @@
 		D2E2E16E29529D6A00627183 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E2E16D29529D6A00627183 /* HomeCoordinator.swift */; };
 		D2E2E1712952A6C300627183 /* UIView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E2E1702952A6C300627183 /* UIView +.swift */; };
 		D2E2E1762952C50300627183 /* TxtFileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E2E1752952C50300627183 /* TxtFileCell.swift */; };
-		D2E2E1792952D0D700627183 /* TxtFileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E2E1782952D0D700627183 /* TxtFileModel.swift */; };
+		D2E2E1792952D0D700627183 /* TxtFileDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E2E1782952D0D700627183 /* TxtFileDTO.swift */; };
 		D2E2E17C2952D14B00627183 /* SectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E2E17B2952D14B00627183 /* SectionModel.swift */; };
 		D2E2E17F2952D81800627183 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E2E17E2952D81800627183 /* MainViewModel.swift */; };
+		D2FE72D82962ABE2008B307A /* CellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FE72D72962ABE2008B307A /* CellModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,9 +64,10 @@
 		D2E2E16D29529D6A00627183 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		D2E2E1702952A6C300627183 /* UIView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView +.swift"; sourceTree = "<group>"; };
 		D2E2E1752952C50300627183 /* TxtFileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxtFileCell.swift; sourceTree = "<group>"; };
-		D2E2E1782952D0D700627183 /* TxtFileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxtFileModel.swift; sourceTree = "<group>"; };
+		D2E2E1782952D0D700627183 /* TxtFileDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxtFileDTO.swift; sourceTree = "<group>"; };
 		D2E2E17B2952D14B00627183 /* SectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionModel.swift; sourceTree = "<group>"; };
 		D2E2E17E2952D81800627183 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		D2FE72D72962ABE2008B307A /* CellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,18 +248,19 @@
 		D2E2E1772952D0A500627183 /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
-				D2E2E17A2952D0DD00627183 /* Model */,
+				D2E2E17A2952D0DD00627183 /* RxDataSourceModel */,
+				D2FE72D92962AD3B008B307A /* DTO */,
 			);
 			path = DataLayer;
 			sourceTree = "<group>";
 		};
-		D2E2E17A2952D0DD00627183 /* Model */ = {
+		D2E2E17A2952D0DD00627183 /* RxDataSourceModel */ = {
 			isa = PBXGroup;
 			children = (
-				D2E2E1782952D0D700627183 /* TxtFileModel.swift */,
 				D2E2E17B2952D14B00627183 /* SectionModel.swift */,
+				D2FE72D72962ABE2008B307A /* CellModel.swift */,
 			);
-			path = Model;
+			path = RxDataSourceModel;
 			sourceTree = "<group>";
 		};
 		D2E2E17D2952D80C00627183 /* ViewModel */ = {
@@ -266,6 +269,14 @@
 				D2E2E17E2952D81800627183 /* MainViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D2FE72D92962AD3B008B307A /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				D2E2E1782952D0D700627183 /* TxtFileDTO.swift */,
+			);
+			path = DTO;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -393,9 +404,10 @@
 				D2E2E152295293D900627183 /* AppDelegate.swift in Sources */,
 				D2BDAA702953F15600D6AD7C /* Array +.swift in Sources */,
 				D2BDAA802954277A00D6AD7C /* DetailViewModel.swift in Sources */,
+				D2FE72D82962ABE2008B307A /* CellModel.swift in Sources */,
 				D2BDAA762954197700D6AD7C /* UIStackView +.swift in Sources */,
 				D2E2E17C2952D14B00627183 /* SectionModel.swift in Sources */,
-				D2E2E1792952D0D700627183 /* TxtFileModel.swift in Sources */,
+				D2E2E1792952D0D700627183 /* TxtFileDTO.swift in Sources */,
 				D2BDAA7829541BC000D6AD7C /* DetailCoordinator.swift in Sources */,
 				D2D6D154295AA5830001E1C5 /* TextFileManager.swift in Sources */,
 				D2E2E154295293D900627183 /* SceneDelegate.swift in Sources */,

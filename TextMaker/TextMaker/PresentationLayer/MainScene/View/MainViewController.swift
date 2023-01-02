@@ -119,7 +119,10 @@ private extension MainViewController {
                 return .init()
             }
             
-            cell.setProperties(with: item)
+            switch item {
+            case .textFile(let textDTO):
+                cell.setProperties(with: textDTO)
+            }
             
             return cell
         }
@@ -134,7 +137,7 @@ private extension MainViewController {
         self.mainCollectionView.rx.setDelegate(self)
             .disposed(by: disposeBag)
         
-        self.mainCollectionView.rx.modelSelected(TxtFileModel.self)
+        self.mainCollectionView.rx.modelSelected(CellModel.self)
             .subscribe { [weak self] event in
                 guard let model = event.element else { return }
                 

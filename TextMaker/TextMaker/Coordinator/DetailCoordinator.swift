@@ -11,9 +11,9 @@ final class DetailCoordinator: Coordinator {
     
     weak var parentCoordinator: ParentCoordinator?
     var navigationController: UINavigationController
-    private var model: TxtFileModel?
+    private var model: CellModel?
     
-    init(_ navigation: UINavigationController, with parent: ParentCoordinator, model: TxtFileModel?) {
+    init(_ navigation: UINavigationController, with parent: ParentCoordinator, model: CellModel?) {
         self.navigationController = navigation
         self.parentCoordinator = parent
         self.model = model
